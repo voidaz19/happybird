@@ -1,0 +1,121 @@
+[gd_scene load_steps=6 format=3 uid="uid://b3eowk8as2h2k"]
+
+[ext_resource type="Script" path="res://src/UI/ui.gd" id="1_5t6dn"]
+[ext_resource type="Texture2D" uid="uid://cxsjmqxd3y4fo" path="res://assets/PNG/UI/UIbg.png" id="2_cepfl"]
+[ext_resource type="Texture2D" uid="uid://cffndjfhtfn3x" path="res://assets/PNG/UI/textGameOver.png" id="3_hxiop"]
+[ext_resource type="Texture2D" uid="uid://duyxhnmq8y23r" path="res://assets/PNG/UI/buttonLarge.png" id="4_rngbo"]
+[ext_resource type="LabelSettings" uid="uid://c6pglnwqjh0dv" path="res://src/UI/new_label_settings.tres" id="5_i6tiq"]
+
+[node name="UI" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_5t6dn")
+metadata/_edit_lock_ = true
+
+[node name="scoreContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -26.5
+offset_top = 50.0
+offset_right = 26.5
+offset_bottom = 128.0
+grow_horizontal = 2
+scale = Vector2(0.6, 0.6)
+metadata/_edit_lock_ = true
+
+[node name="GameOverContainer" type="MarginContainer" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -216.0
+offset_top = -100.0
+offset_right = 216.0
+offset_bottom = 100.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="GameOverBg" type="TextureRect" parent="GameOverContainer"]
+layout_mode = 2
+texture = ExtResource("2_cepfl")
+expand_mode = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="GameOverContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 15
+
+[node name="VBoxContainer" type="VBoxContainer" parent="GameOverContainer/MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_constants/separation = 15
+
+[node name="GameOver" type="TextureRect" parent="GameOverContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+texture = ExtResource("3_hxiop")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="GameOverContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = 15
+alignment = 1
+
+[node name="btn_menu" type="Button" parent="GameOverContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+icon = ExtResource("4_rngbo")
+flat = true
+
+[node name="menu" type="Label" parent="GameOverContainer/MarginContainer/VBoxContainer/HBoxContainer/btn_menu"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -3.465
+offset_bottom = -3.465
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 25
+text = "主菜单"
+label_settings = ExtResource("5_i6tiq")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="btn_retry" type="Button" parent="GameOverContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+icon = ExtResource("4_rngbo")
+flat = true
+
+[node name="retry" type="Label" parent="GameOverContainer/MarginContainer/VBoxContainer/HBoxContainer/btn_retry"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -3.465
+offset_bottom = -3.465
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 25
+text = "再来一局"
+label_settings = ExtResource("5_i6tiq")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="pressed" from="GameOverContainer/MarginContainer/VBoxContainer/HBoxContainer/btn_menu" to="." method="_on_btn_menu_pressed"]
+[connection signal="pressed" from="GameOverContainer/MarginContainer/VBoxContainer/HBoxContainer/btn_retry" to="." method="_on_btn_retry_pressed"]

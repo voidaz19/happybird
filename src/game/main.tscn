@@ -1,0 +1,48 @@
+[gd_scene load_steps=9 format=3 uid="uid://t71vru1v7jqg"]
+
+[ext_resource type="Script" path="res://src/game/main.gd" id="1_7vxmk"]
+[ext_resource type="PackedScene" uid="uid://did5w8e2cfli2" path="res://src/entities/player.tscn" id="2_ye64a"]
+[ext_resource type="Script" path="res://src/entities/parallax_background.gd" id="3_476um"]
+[ext_resource type="Texture2D" uid="uid://dwu3btb688pps" path="res://assets/PNG/background.png" id="4_uwahj"]
+[ext_resource type="PackedScene" uid="uid://b3eowk8as2h2k" path="res://src/UI/ui.tscn" id="5_h7h37"]
+[ext_resource type="AudioStream" uid="uid://d3weiaw1sid4d" path="res://assets/audio/music_fx_jump_sound.wav" id="6_dtcg1"]
+[ext_resource type="AudioStream" uid="uid://cja20q01h20vn" path="res://assets/audio/爆炸 _ 爆炸12_Freesound.wav" id="7_qhmjj"]
+[ext_resource type="Script" path="res://addons/state_machine/BaseStateMachine.gd" id="8_mbyeb"]
+
+[node name="main" type="Node2D"]
+script = ExtResource("1_7vxmk")
+minSpawnTime = 1.2
+maxSpawnTime = 2.0
+
+[node name="Player" parent="." instance=ExtResource("2_ye64a")]
+position = Vector2(77, 170)
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+script = ExtResource("3_476um")
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+unique_name_in_owner = true
+motion_mirroring = Vector2(1152, 0)
+
+[node name="Background" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+position = Vector2(576, 324)
+scale = Vector2(1.44, 1.35)
+texture = ExtResource("4_uwahj")
+
+[node name="UI" parent="." instance=ExtResource("5_h7h37")]
+process_mode = 3
+top_level = true
+mouse_filter = 2
+
+[node name="bgm" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_dtcg1")
+autoplay = true
+bus = &"BGM"
+
+[node name="gameover" type="AudioStreamPlayer" parent="."]
+process_mode = 3
+stream = ExtResource("7_qhmjj")
+bus = &"SFX"
+
+[node name="GameStateMachine" type="Node" parent="."]
+script = ExtResource("8_mbyeb")

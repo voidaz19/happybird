@@ -1,0 +1,39 @@
+[gd_scene load_steps=4 format=3 uid="uid://ba40wa7aw1m03"]
+
+[ext_resource type="Script" path="res://src/UI/menu.gd" id="1_l5mt4"]
+[ext_resource type="Texture2D" uid="uid://ctpdik61q78qp" path="res://assets/menu.png" id="1_oex65"]
+[ext_resource type="AudioStream" uid="uid://cam1t348g0k8u" path="res://assets/audio/music_fx_jump_sound_2.wav" id="3_kf6el"]
+
+[node name="menu" type="Node2D"]
+process_mode = 3
+script = ExtResource("1_l5mt4")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+offset_right = 1152.0
+offset_bottom = 648.0
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer"]
+layout_mode = 2
+texture = ExtResource("1_oex65")
+expand_mode = 1
+
+[node name="start" type="Button" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "开始旅行"
+
+[node name="MenuBar" type="MenuBar" parent="."]
+offset_right = 288.0
+offset_bottom = 80.0
+
+[node name="PopupMenu" type="PopupMenu" parent="MenuBar"]
+
+[node name="PopupMenu2" type="PopupMenu" parent="MenuBar"]
+auto_translate_mode = 1
+
+[node name="menuBgm" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_kf6el")
+autoplay = true
+
+[connection signal="pressed" from="MarginContainer/start" to="." method="_on_start_pressed"]

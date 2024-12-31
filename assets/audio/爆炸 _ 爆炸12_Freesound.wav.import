@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://cja20q01h20vn"
+path="res://.godot/imported/爆炸 _ 爆炸12_Freesound.wav-5905d732f99b7962428e1ef846753699.sample"
+
+[deps]
+
+source_file="res://assets/audio/爆炸 _ 爆炸12_Freesound.wav"
+dest_files=["res://.godot/imported/爆炸 _ 爆炸12_Freesound.wav-5905d732f99b7962428e1ef846753699.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0
