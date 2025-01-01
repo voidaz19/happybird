@@ -1,5 +1,10 @@
 extends RefCounted
 class_name BaseState
 
-func update():
+
+func enter()->void:
+	
+	pass
+	
+func update(delta:float)->void:
 	pass
