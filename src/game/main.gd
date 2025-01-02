@@ -2,15 +2,28 @@ extends Node2D
 var ROCK = preload("res://src/entities/rock.tscn")
 var timer:Timer=Timer.new()
 var scoreTimer:Timer=Timer.new()
+##石头生成计时器的最小值
 @export var minSpawnTime:float=1.5 
+##石头生成计时器的最小值
 @export var maxSpawnTime:float=3.0 
 @onready var player: CharacterBody2D = $Player
 @onready var ui: Control = $UI
 @onready var gameover: AudioStreamPlayer = $gameover
+@onready var gameStateMachine: GameStateMachine = %gameStateMachine
 
 var score:int
 
+func initGame()->void:
+	
+	pass
+	
+func readyGame()->void:
+	
+	pass
+	
+	
 func _ready() -> void:
+	gameStateMachine.launchState(0)
 	player.screenExited.connect(gameOver)
 	ui.btnMenuPressed.connect(_onBtnMenuPressed)
 	ui.btnRetryPressed.connect(_onBtnRetryPressed)
